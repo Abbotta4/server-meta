@@ -1,0 +1,10 @@
+# Listen for xmlrpc requests on port 6000 for rtorrent
+
+server {
+       listen	6000;
+       error_log /var/log/nginx/rt-nginx-err.log;
+       location /RPC2 {
+       		include scgi_params;
+		scgi_pass unix:/srv/rtorrent/.scgi_local;
+	}
+}
